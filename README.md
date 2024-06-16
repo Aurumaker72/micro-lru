@@ -1,4 +1,4 @@
 # micro-lru
 
-Header-only lightweight STL-only implementation of an LRU cache in C++ 
+Header-only lightweight STL implementation of an LRU cache in C++ 
 
