@@ -33,7 +33,7 @@ template <typename K, typename V> class Cache
      * \param value
      * \remarks The value is swapped if the key already exists
      */
-    void add(K key, V value)
+    void add(const K &key, V value)
     {
         if (m_map.size() >= m_size)
         {
@@ -66,22 +66,20 @@ template <typename K, typename V> class Cache
      * \return The value associated with the key, or nothing if the key does not
      * exist
      */
-    std::optional<V> get(K key)
+    std::optional<V> get(const K &key)
     {
-        if (!contains(key))
-        {
-            return std::nullopt;
-        }
+        auto it = m_map.find(key);
+        if (it == m_map.end()) return std::nullopt;
 
-        auto &[usage, value] = m_map[key];
+        auto &[usage, value] = it->second;
         ++usage;
-        return std::make_optional(value);
+        return value;
     }
 
     /**
      * \brief Checks if the cache contains a key
      */
-    bool contains(K key) { return m_map.contains(key); }
+    bool contains(const K &key) { return m_map.contains(key); }
 
     /**
      * \brief Gets the current size of the cache
