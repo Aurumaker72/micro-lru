@@ -1,4 +1,8 @@
-// MicroLRU Aurumaker72 2024
+/*
+ * Copyright (c) 2026, Aurumaker72.
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
 
 #include <functional>
 #include <optional>
